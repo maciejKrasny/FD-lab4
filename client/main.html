@@ -1,0 +1,71 @@
+<head>
+  <title>Ranking</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+  <nav class="red">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Ranking</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li class="nav-item">
+            <button id="openModal" class="waves-effect waves-light btn">Add player</button>
+            <button id="sort" class="waves-effect waves-light btn"><div class="btn__content">SORT<i class="material-icons">{{sortArrow}}</i></div></button>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="content">
+      <div class="players">
+        {{#each players}}
+        <div class="player__container">
+          <div class="player__place">#{{incremented @index}}</div>
+          {{> player}}
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  {{> add}}
+
+
+</body>
+
+<template name="player">
+  <div class="player">
+    <img class="player__image" src='{{image}}'>
+    <div class="name">{{name}}</div>
+    <div class="rate">
+      <div class="likes">
+        <button id="like" class="waves-effect waves-light btn"><i class="material-icons">thumb_up</i></button>
+        {{likes}}
+      </div>
+      <div class="dislikes">
+        {{dislikes}}
+        <button id="dislike" class="red waves-effect waves-light btn"><i class="material-icons">thumb_down</i></button>
+      </div>
+    </div>
+    <a href="#" class="delete-note secondary-content player__remove">
+      <i class="material-icons icon__remove">close</i></a>
+  </div>
+</template>
+
+<template name="add">
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span id="close" class="close">&times;</span>
+      <h4>Add player</h4>
+      <form action="" class="add-form">
+        <input type="text" name="name" placeholder="Add name..." />
+        <input type="text" name="image" placeholder="Add image url..." />
+        <button type="submit" class="waves-effect waves-light btn right">Add player</button>
+      </form>
+    </div>
+  </div>
+</template>
